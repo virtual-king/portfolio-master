@@ -251,32 +251,29 @@ export default function Skills() {
   ];
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900/20">
-      <div className="max-w-7xl mx-auto">
-        {/* Personalized Header */}
+    <div className="min-h-screen bg-navy text-white py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="relative inline-block mb-6">
-            <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              Digital Marketing Expertise
-            </h1>
-            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full"></div>
-          </div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            <span className="font-semibold text-blue-600 dark:text-blue-400">3+ years</span> of driving 
-            <span className="font-semibold text-green-600 dark:text-green-400"> measurable growth</span> through 
-            <span className="font-semibold text-purple-600 dark:text-purple-400"> data-driven strategies</span> and 
-            <span className="font-semibold text-orange-600 dark:text-orange-400"> innovative campaigns</span>
+          <p className="text-blue-400 text-sm font-medium tracking-widest uppercase mb-3">Expertise</p>
+          <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-4">Skills & Capabilities</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <span className="text-blue-400 font-semibold">3+ years</span> of driving 
+            <span className="text-emerald-400 font-semibold"> measurable growth</span> through 
+            <span className="text-purple-400 font-semibold"> data-driven strategies</span> and 
+            <span className="text-orange-400 font-semibold"> innovative campaigns</span>
           </p>
         </div>
 
         {/* Quick Achievement Stats */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
           {notableAchievements.map((achievement, index) => (
-            <div key={index} className="text-center p-4 bg-white/80 dark:bg-gray-800/80 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-              <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            <div key={index} className="text-center p-4 bg-navy-light/50 rounded-2xl border border-white/8 hover:border-white/20 transition-all duration-300">
+              <div className="text-2xl font-bold text-blue-400">
                 {achievement.metric}
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400 mt-1 leading-tight">
+              <div className="text-xs text-gray-400 mt-1 leading-tight">
                 {achievement.label}
               </div>
             </div>
@@ -284,7 +281,7 @@ export default function Skills() {
         </div>
 
         {/* Interactive Skill Categories */}
-        <Card className="p-8 mb-12 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-2xl">
+        <div className="rounded-2xl border border-white/8 bg-navy-light/50 p-8 mb-12 backdrop-blur-sm">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {marketingCategories.map((category) => (
               <button
@@ -292,8 +289,8 @@ export default function Skills() {
                 onClick={() => setActiveCategory(category.id)}
                 className={`p-4 rounded-2xl transition-all duration-500 transform hover:scale-105 ${
                   activeCategory === category.id 
-                    ? `bg-gradient-to-br ${category.color} text-white shadow-lg scale-105`
-                    : `${category.bgColor} text-gray-700 dark:text-gray-300 hover:shadow-md`
+                    ? `bg-gradient-to-br ${category.color} text-white shadow-lg shadow-blue-500/20 scale-105`
+                    : 'bg-navy-light/30 text-gray-400 hover:text-white hover:bg-navy-light/50 border border-white/5'
                 }`}
               >
                 <i className={`${category.icon} text-2xl mb-2 block`}></i>
@@ -309,8 +306,8 @@ export default function Skills() {
                 key={skill.name}
                 className={`p-6 rounded-2xl border-2 transition-all duration-500 transform hover:scale-105 ${
                   hoveredSkill === skill.name
-                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 shadow-lg'
-                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-md'
+                    ? 'border-blue-500 bg-blue-900/20 shadow-lg shadow-blue-500/10'
+                    : 'border-white/8 bg-navy-light/30 hover:border-white/20'
                 }`}
                 onMouseEnter={() => setHoveredSkill(skill.name)}
                 onMouseLeave={() => setHoveredSkill(null)}
@@ -321,12 +318,12 @@ export default function Skills() {
                       <i className={`${skill.icon} text-white text-lg`}></i>
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-gray-900 dark:text-white">{skill.name}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{skill.description}</p>
+                      <h3 className="font-heading text-lg font-bold text-white">{skill.name}</h3>
+                      <p className="text-sm text-gray-400">{skill.description}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    <span className="text-2xl font-bold text-blue-400">
                       {skill.level}%
                     </span>
                   </div>
@@ -334,11 +331,11 @@ export default function Skills() {
 
                 {/* Progress Bar with Animation */}
                 <div className="mb-4">
-                  <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  <div className="flex justify-between text-sm text-gray-400 mb-2">
                     <span>{skill.projects} projects completed</span>
-                    <span className="font-semibold">{skill.impact}</span>
+                    <span className="font-semibold text-blue-300">{skill.impact}</span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+                  <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden">
                     <div
                       className={`h-3 rounded-full bg-gradient-to-r ${marketingCategories.find(c => c.id === activeCategory)?.color} transition-all duration-1000 ease-out`}
                       style={{ 
@@ -351,64 +348,64 @@ export default function Skills() {
 
                 {/* Achievement Badge */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full">
+                  <span className="text-xs font-medium px-3 py-1 bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 rounded-full">
                     🏆 {skill.achievement}
                   </span>
                   <div className="flex space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
                     <span className="text-xs text-gray-500">Proven Results</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </Card>
+        </div>
 
         {/* Certifications & Proficiencies */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">
+          <h2 className="font-heading text-3xl font-bold text-center mb-12 text-white">
             Tools & Platform Expertise
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {certifications.map((cert, index) => (
-              <Card key={index} className="p-6 text-center group hover:scale-105 transition-transform duration-300 border-0 shadow-lg">
+              <div key={index} className="p-6 text-center rounded-2xl border border-white/8 bg-navy-light/50 hover:scale-105 transition-transform duration-300 hover:border-white/20">
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${cert.color} flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300`}>
                   <i className={`${cert.icon} text-white text-2xl`}></i>
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">{cert.name}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-1 text-sm">{cert.issuer}</p>
+                <h3 className="font-heading text-lg font-bold mb-2 text-white">{cert.name}</h3>
+                <p className="text-gray-400 mb-1 text-sm">{cert.issuer}</p>
                 <div className="flex items-center justify-center space-x-2">
-                  <span className="text-xs font-medium px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full">
+                  <span className="text-xs font-medium px-2 py-1 bg-blue-500/15 text-blue-400 border border-blue-500/20 rounded-full">
                     {cert.level}
                   </span>
                   <span className="text-sm text-gray-500">{cert.year}</span>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Marketing Tools Grid */}
-        <Card className="p-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-2xl">
-          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+        <div className="rounded-2xl border border-white/8 bg-navy-light/50 p-8 backdrop-blur-sm">
+          <h2 className="font-heading text-3xl font-bold text-center mb-8 text-white">
             Marketing Technology Stack
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {tools.map((tool, index) => (
               <div
                 key={tool.name}
-                className="p-4 text-center rounded-xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="p-4 text-center rounded-xl bg-navy-light/30 border border-white/5 hover:border-white/20 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 <div className="w-10 h-10 mx-auto mb-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
                   <i className={`${tool.icon} text-white`}></i>
                 </div>
-                <h4 className="font-semibold text-sm text-gray-900 dark:text-white mb-1">{tool.name}</h4>
+                <h4 className="font-semibold text-sm text-white mb-1">{tool.name}</h4>
                 <span className={`text-xs px-2 py-1 rounded-full ${
                   tool.proficiency === 'Expert' 
-                    ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                    ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
                     : tool.proficiency === 'Advanced'
-                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
-                    : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+                    ? 'bg-blue-500/15 text-blue-400 border border-blue-500/20'
+                    : 'bg-yellow-500/15 text-yellow-400 border border-yellow-500/20'
                 }`}>
                   {tool.proficiency}
                 </span>
@@ -416,30 +413,31 @@ export default function Skills() {
               </div>
             ))}
           </div>
-        </Card>
+        </div>
 
         {/* Career Highlights */}
-        <div className="text-center mt-16 p-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl text-white">
-          <h3 className="text-2xl font-bold mb-6">Career Highlights</h3>
+        <div className="text-center mt-16 p-8 bg-gradient-to-r from-blue-900/40 to-purple-900/40 rounded-3xl border border-blue-500/20">
+          <h3 className="font-heading text-2xl font-bold mb-6 text-white">Career Highlights</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             <div>
-              <div className="text-lg font-semibold mb-2">🚀 SEO Growth</div>
-              <div className="text-sm opacity-90">70% organic traffic increase across international markets</div>
+              <div className="text-lg font-semibold mb-2 text-blue-400">🚀 SEO Growth</div>
+              <div className="text-sm text-gray-300">70% organic traffic increase across international markets</div>
             </div>
             <div>
-              <div className="text-lg font-semibold mb-2">💼 Lead Generation</div>
-              <div className="text-sm opacity-90">1,000+ qualified property leads through digital campaigns</div>
+              <div className="text-lg font-semibold mb-2 text-emerald-400">💼 Lead Generation</div>
+              <div className="text-sm text-gray-300">1,000+ qualified property leads through digital campaigns</div>
             </div>
             <div>
-              <div className="text-lg font-semibold mb-2">🎯 Event Marketing</div>
-              <div className="text-sm opacity-90">10,000+ attendees managed at NADA Auto Show</div>
+              <div className="text-lg font-semibold mb-2 text-purple-400">🎯 Event Marketing</div>
+              <div className="text-sm text-gray-300">10,000+ attendees managed at NADA Auto Show</div>
             </div>
             <div>
-              <div className="text-lg font-semibold mb-2">🌟 Influencer Collabs</div>
-              <div className="text-sm opacity-90">Worked with top celebrities & industry professionals</div>
+              <div className="text-lg font-semibold mb-2 text-pink-400">🌟 Influencer Collabs</div>
+              <div className="text-sm text-gray-300">Worked with top celebrities & industry professionals</div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
