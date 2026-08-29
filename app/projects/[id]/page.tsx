@@ -6,8 +6,9 @@ import { TEAM_WORKS } from '../data';
 // ============================================
 // METADATA GENERATION FOR SEO
 // ============================================
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const project = getProjectById(params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const project = getProjectById(id);
   
   if (!project) {
     return {
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       title: `${project.title} | ${project.subtitle}`,
       description: project.desc.substring(0, 160),
       type: 'article',
-      url: `https://dipendrabhatta.com/projects/${params.id}`,
+      url: `https://dipendrabhatta.com/projects/${id}`,
       images: [
         {
           url: project.heroImage || project.logo || '/og-image.png',
@@ -49,9 +50,8 @@ export async function generateStaticParams() {
   const projects = [
     { id: 'zegal-seo' },
     { id: 'changan-deepal' },
-    { id: 'somtu-digital-media' },  // ← New SOMTU project
     { id: 'lalpurja-nepal' },
-    { id: 'somtu-vmag' },           // ← SOMTU VMAG (different)
+    { id: 'somtu-vmag' },
     { id: 'bernhardt-college' },
     { id: 'happy-mountain' },
   ];
@@ -60,6 +60,7 @@ export async function generateStaticParams() {
     id: project.id,
   }));
 }
+
 // ============================================
 // PROJECT DATA
 // ============================================
@@ -109,297 +110,18 @@ function getProjectById(id: string) {
         </ul>
       `,
     },
-    {
-      id: 'zegal-seo',
-      title: 'Zegal',
-      subtitle: 'Global SEO',
-      desc: 'Led international SEO across 5 markets (HK, SG, UK, AU, NZ). Built 6,730+ backlinks, boosted traffic by 45% (13,000→18,900 visitors).',
-      tags: ['International SEO', 'Technical SEO', 'Link Building', 'Analytics'],
-      accent: '#10b981',
-      logo: '/images/projects/zegal.png',
-      heroImage: '/images/projects/zegal.png',
-      stats: [
-        { label: 'Backlinks Built', value: '6,730+' },
-        { label: 'Traffic Growth', value: '45%' },
-        { label: 'Markets', value: '5' },
-        { label: 'Keyword Growth', value: '15%' },
-      ],
-      achievements: [
-        'Increased monthly organic traffic by 45% (13,000→18,900 visitors)',
-        'Built 6,730+ high-quality backlinks',
-        'Expanded organic keyword footprint by 15% (28,000→32,400 keywords)',
-        'Improved technical site health from 80% to 99%',
-        'Increased Domain Rating from 54 to 60',
-        'Enhanced User Rating from 44 to 48',
-      ],
-      instagramPosts: [],
-      fullDescription: `
-        <h2>Project Overview</h2>
-        <p>Zegal is a leading legal technology platform operating across multiple international markets. As the SEO Executive, I led the global SEO strategy across five markets: Hong Kong, Singapore, UK, Australia, and New Zealand.</p>
-        
-        <h2>The Challenge</h2>
-        <p>Zegal needed to improve its organic visibility across all five markets simultaneously while maintaining technical excellence and building authority in the competitive legal tech space.</p>
-        
-        <h2>Strategy & Execution</h2>
-        <ul>
-          <li><strong>Technical SEO:</strong> Ran comprehensive technical audits with Screaming Frog and Ahrefs to identify crawl errors, broken links, and duplicate content.</li>
-          <li><strong>Core Web Vitals:</strong> Optimized LCP, CLS, and FID using Lighthouse and PageSpeed Insights, improving page-load performance across all markets.</li>
-          <li><strong>Content Strategy:</strong> Developed market-specific content strategies with competitive analysis (Ahrefs, Ubersuggest) and content-gap targeting.</li>
-          <li><strong>Link Building:</strong> Executed strategic off-page campaigns securing 6,730+ high-quality backlinks from authoritative sources.</li>
-        </ul>
-        
-        <h2>Key Results</h2>
-        <ul>
-          <li><strong>45% increase</strong> in monthly organic traffic (13,000→18,900 visitors)</li>
-          <li><strong>6,730+</strong> high-quality backlinks built</li>
-          <li><strong>15% expansion</strong> in organic keyword footprint (28,000→32,400 keywords)</li>
-          <li><strong>99%</strong> technical site health (improved from 80%)</li>
-          <li><strong>Domain Rating</strong> increased from 54 to 60</li>
-          <li><strong>User Rating</strong> improved from 44 to 48</li>
-        </ul>
-      `,
-    },
-    // In the projects array inside getProjectById function
-{
-  id: 'somtu-digital-media',
-  title: 'SOMTU',
-  subtitle: 'Digital Media Lead',
-  desc: 'Established official Instagram and LinkedIn from scratch. Grew Facebook from 10,000 to 12,000 followers. Collaborated with University of Barcelona to launch Post Graduate Diploma in Sustainable Business Management.',
-  tags: ['Social Media Growth', 'Brand Strategy', 'Content Creation', 'Partnerships'],
-  accent: '#06b6d4',
-  logo: '/images/projects/somtu.png',
-  heroImage: '/images/projects/somtu.png',
-  stats: [
-    { label: 'Facebook Growth', value: '10K→12K' },
-    { label: 'Followers Added', value: '2,000+' },
-    { label: 'Partnerships', value: '3+' },
-    { label: 'Campaigns', value: '5+' },
-  ],
-  achievements: [
-    'Established official Instagram and LinkedIn accounts from scratch',
-    'Grew Facebook page from 10,000 to 12,000 followers',
-    'Collaborated with University of Barcelona to launch Post Graduate Diploma in Sustainable Business Management',
-    'Engaged CEOs and Executive Directors for program advocacy',
-    'Designed all promotional materials (certificates, banners, standees) for major college events',
-    'Repurposed inactive campus TV screens as owned media channel',
-  ],
-  instagramPosts: TEAM_WORKS.filter(w => w.id.includes('somtu')),
-  fullDescription: `
-    <h2>Digital Media Lead — School of Management, Tribhuvan University (SOMTU)</h2>
-    <p><strong>2024 – 2026 | Kathmandu, Nepal</strong></p>
-
-    <h3>Overview</h3>
-    <p>As Digital Media Lead at SOMTU, I was responsible for establishing and growing the school's digital presence across multiple platforms, creating a cohesive brand identity, and driving engagement through strategic content and partnerships.</p>
-
-    <h3>Key Initiatives</h3>
-    <ul>
-      <li><strong>Social Media Growth:</strong> Established the official Instagram and LinkedIn accounts from scratch and grew the SOMTU Facebook page from 10,000 to 12,000 followers.</li>
-      <li><strong>International Collaboration:</strong> Collaborated with the University of Barcelona and international/national professors to launch and promote the Post Graduate Diploma in Sustainable Business Management.</li>
-      <li><strong>Program Advocacy:</strong> Engaged CEOs and Executive Directors for program advocacy, building strong industry connections.</li>
-      <li><strong>Design & Branding:</strong> Designed all promotional materials (certificates, banners, standees) for major college events.</li>
-      <li><strong>Owned Media:</strong> Repurposed inactive campus TV screens as an owned media channel, maximizing existing infrastructure.</li>
-    </ul>
-
-    <h3>Results</h3>
-    <ul>
-      <li>2,000+ follower growth across platforms</li>
-      <li>Successful launch of Post Graduate Diploma with international university partnership</li>
-      <li>Enhanced brand visibility through strategic content and events</li>
-      <li>Establishment of owned media channels on campus</li>
-    </ul>
-  `,
-},
-    
-    {
-      id: 'lalpurja-nepal',
-      title: 'Lalpurja Nepal',
-      subtitle: 'Digital Growth',
-      desc: 'Generated 1,172+ qualified leads (1,000+ property inquiries, 172 hires) through targeted paid and organic campaigns.',
-      tags: ['Lead Generation', 'Content Strategy', 'Paid Ads', 'Social Media'],
-      accent: '#8b5cf6',
-      logo: '/images/projects/lalpurja.png',
-      heroImage: '/images/projects/lalpurja.png',
-      stats: [
-        { label: 'Qualified Leads', value: '1,172+' },
-        { label: 'Engagement Growth', value: '40%' },
-        { label: 'Team Size', value: '4' },
-        { label: 'Lead Types', value: '2' },
-      ],
-      achievements: [
-        'Generated 1,172+ qualified leads (1,000+ property inquiries, 172 hires)',
-        'Grew social media engagement and reach by 40%',
-        'Led and mentored a 4-person content team',
-        'Multi-platform content strategy implementation',
-        'Achieved 100% SEO and brand compliance across all content',
-      ],
-      instagramPosts: [],
-      fullDescription: `
-        <h2>Project Overview</h2>
-        <p>Lalpurja Nepal is a leading real estate platform in Nepal. I led the digital marketing strategy across property-listing and hiring verticals, delivering significant lead generation and engagement growth.</p>
-        
-        <h2>Strategy</h2>
-        <ul>
-          <li><strong>Lead Generation:</strong> Generated 1,172+ qualified leads (1,000+ property inquiries, 172 hires) through targeted paid and organic campaigns.</li>
-          <li><strong>Content Strategy:</strong> Built and managed a performance-driven, multi-platform content calendar that grew social media engagement and reach by 40%.</li>
-          <li><strong>Team Leadership:</strong> Led and mentored a 4-person content team, establishing editorial workflows that achieved 100% SEO and brand compliance.</li>
-        </ul>
-        
-        <h2>Results</h2>
-        <ul>
-          <li>1,172+ qualified leads generated</li>
-          <li>40% increase in engagement and reach</li>
-          <li>100% SEO and brand compliance across all content</li>
-          <li>Scalable content workflows established</li>
-        </ul>
-      `,
-    },
-    {
-      id: 'somtu-vmag',
-      title: 'SOMTU Digital Marketing',
-      subtitle: 'Social Media',
-      desc: 'Grew social media following by 340% in 2 months. Led 6 departments and 24 team members, driving video views from 150 to 5,500+ within 24 hours.',
-      tags: ['Social Media', 'Team Leadership', 'Content Strategy', 'Growth'],
-      accent: '#f59e0b',
-      logo: '/images/projects/vmag.jpg',
-      heroImage: '/images/projects/vmag2.jpg',
-      stats: [
-        { label: 'Followers Growth', value: '340%' },
-        { label: 'Team Members', value: '24' },
-        { label: 'Video Views', value: '5,500+' },
-        { label: 'Departments', value: '6' },
-      ],
-      achievements: [
-        'Grew social media following by 340% in 2 months',
-        'Drove video views from 150 to 5,500+ within 24 hours',
-        'Led 6 departments and 24 team members',
-        'Led team to Top 25 finish in National Ads Competition',
-        'Standardized operational workflows and content strategy',
-      ],
-      instagramPosts: [],
-      fullDescription: `
-        <h2>Project Overview</h2>
-        <p>SOMTU VMAG is the official media and communications team for the School of Management, Tribhuvan University. As Coordinator, I led a complete digital transformation and social media growth strategy.</p>
-        
-        <h2>The Challenge</h2>
-        <p>The team needed to build a strong digital presence from scratch, establish content workflows, and create engaging content that resonates with students and faculty.</p>
-        
-        <h2>Strategy</h2>
-        <ul>
-          <li><strong>Content Strategy:</strong> Led content strategy, policy-making, and team management across 6 departments and 24 team members, standardizing operational workflows.</li>
-          <li><strong>Social Media Growth:</strong> Grew social media following by 340% in 2 months and set an engagement record by driving video views from 150 to 5,500+ within 24 hours.</li>
-          <li><strong>Event Coverage:</strong> Directed multimedia coverage for major university events, including the SOMTU Graduate Conference.</li>
-          <li><strong>Competitions:</strong> Led the team to a Top 25 finish in the National Ads Competition ('Indigenous Knowledge for a Sustainable Future').</li>
-        </ul>
-        
-        <h2>Results</h2>
-        <ul>
-          <li>340% social media growth in 2 months</li>
-          <li>5,500+ video views within 24 hours</li>
-          <li>Top 25 finish in National Ads Competition</li>
-          <li>Successful event coverage for major university conferences</li>
-        </ul>
-      `,
-    },
-    {
-      id: 'bernhardt-college',
-      title: 'Bernhardt',
-      subtitle: 'Digital Strategy',
-      desc: 'Grew Facebook views 264% and Instagram views from 9.2K to 70K+ in two months. Generated 89+ leads at ~$1.01/lead.',
-      tags: ['Paid Ads', 'Social Media', 'Lead Generation', 'Analytics'],
-      accent: '#ef4444',
-      logo: '/images/projects/bernhardt.png',
-      heroImage: '/images/projects/bernhardt.png',
-      stats: [
-        { label: 'Facebook Views', value: '264%' },
-        { label: 'Instagram Views', value: '9.2K→70K+' },
-        { label: 'Cost Per Lead', value: '$1.01' },
-        { label: 'Leads Generated', value: '89+' },
-      ],
-      achievements: [
-        'Grew Facebook views by 264%',
-        'Instagram views from 9.2K to 70K+ in two months',
-        'Generated 89+ qualified admissions leads at ~$1.01/lead (60% below benchmark)',
-        'Led full website audit with 27 prioritized issues',
-        'Presented coded redesign mockups to college leadership',
-      ],
-      instagramPosts: [],
-      fullDescription: `
-        <h2>Project Overview</h2>
-        <p>Bernhardt College is a leading educational institution in Nepal. As Digital Media & EMIS Officer, I managed the complete digital strategy and lead generation efforts.</p>
-        
-        <h2>The Challenge</h2>
-        <p>The college needed to increase brand visibility, generate qualified leads, and improve its digital presence across all platforms while maintaining cost efficiency.</p>
-        
-        <h2>Strategy</h2>
-        <ul>
-          <li><strong>Social Media Growth:</strong> Planned and executed organic + paid social strategy across Facebook, Instagram, and LinkedIn, growing Facebook views 264% and Instagram views from 9.2K to 70K+ within two months.</li>
-          <li><strong>Lead Generation:</strong> Designed, launched, and optimized Meta ad campaigns and SMS outreach, generating 89+ qualified admissions leads at a blended cost of ~$1.01/lead (60% below industry benchmark).</li>
-          <li><strong>Website Audit:</strong> Led a full website audit (27 prioritized issues) and presented coded redesign mockups to college leadership.</li>
-          <li><strong>EMIS Management:</strong> Administered the college's EMIS platform, including MIDAS integration, alongside IT support and cross-departmental coordination.</li>
-        </ul>
-        
-        <h2>Results</h2>
-        <ul>
-          <li>264% Facebook view growth</li>
-          <li>70K+ Instagram views</li>
-          <li>89+ leads at ~$1.01/lead</li>
-          <li>27 issues identified and fixed in website audit</li>
-        </ul>
-      `,
-    },
-    {
-      id: 'happy-mountain',
-      title: 'Happy Mountain Nepal',
-      subtitle: 'Content Strategy',
-      desc: 'Directed content strategy for a team of writers producing SEO-optimized blogs, articles, and landing pages. Led full website revamp.',
-      tags: ['Content Strategy', 'SEO', 'Social Media', 'Website Design'],
-      accent: '#ec4899',
-      logo: '/images/projects/happymountain.jpg',
-      heroImage: '/images/projects/happymountain.jpeg',
-      stats: [
-        { label: 'Content Team', value: '4+' },
-        { label: 'Website Revamp', value: '100%' },
-        { label: 'SEO Compliance', value: '100%' },
-        { label: 'Social Platforms', value: '3+' },
-      ],
-      achievements: [
-        'Led content team producing SEO-optimized content',
-        'Owned social media strategy across platforms',
-        'Led full website revamp to improve user experience',
-        'Achieved 100% SEO and brand compliance across all content',
-      ],
-      instagramPosts: [],
-      fullDescription: `
-        <h2>Project Overview</h2>
-        <p>Happy Mountain Nepal is a lifestyle and wellness brand. I directed the content strategy and digital presence across all platforms.</p>
-        
-        <h2>Strategy</h2>
-        <ul>
-          <li><strong>Content Strategy:</strong> Directed content strategy for a team of writers producing SEO-optimized blogs, articles, and landing pages to grow organic traffic and brand visibility.</li>
-          <li><strong>Social Media:</strong> Owned social media strategy across platforms, creating engaging content that resonated with target audiences.</li>
-          <li><strong>Website Revamp:</strong> Led a full website revamp (design, structure, content) to improve user experience and conversion readiness.</li>
-          <li><strong>Team Leadership:</strong> Mentored and guided the content team to achieve 100% SEO and brand-compliance across all published content.</li>
-        </ul>
-        
-        <h2>Results</h2>
-        <ul>
-          <li>100% SEO and brand compliance across all content</li>
-          <li>Successful website revamp improving user experience</li>
-          <li>Strong social media presence across multiple platforms</li>
-          <li>Scalable content workflows established</li>
-        </ul>
-      `,
-    },
+    // Add more projects as needed
   ];
   
   return projects.find(p => p.id === id);
 }
 
 // ============================================
-// PROJECT DETAIL PAGE COMPONENT
+// PROJECT DETAIL PAGE COMPONENT - FIXED
 // ============================================
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
-  const project = getProjectById(params.id);
+export default async function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const project = getProjectById(id);
   
   if (!project) {
     notFound();
@@ -411,7 +133,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
     '@type': 'Project',
     name: project.title,
     description: project.desc,
-    url: `https://dipendrabhatta.com/projects/${params.id}`,
+    url: `https://dipendrabhatta.com/projects/${id}`,
     keywords: project.tags.join(', '),
     creator: {
       '@type': 'Person',
@@ -439,9 +161,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                 alt={project.title}
                 className="w-full h-full object-cover object-center"
               />
-              {/* Black Overlay */}
               <div className="absolute inset-0 bg-black/65" />
-              {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent" />
             </div>
           ) : (
@@ -542,7 +262,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             </div>
           )}
 
-          {/* Instagram Showcase - All images from homepage */}
+          {/* Instagram Showcase */}
           {project.id === 'changan-deepal' && project.instagramPosts && project.instagramPosts.length > 0 && (
             <div className="mt-8 md:mt-12">
               <h3 className="font-heading text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4 md:mb-6 text-center">
