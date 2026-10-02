@@ -22,7 +22,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <div className="my-6 rounded-lg overflow-hidden border border-white/10">
                 <Image
-                  src={src}
+                  src={typeof src === 'string' ? src : URL.createObjectURL(src)}
                   alt={alt || ''}
                   width={800}
                   height={450}
