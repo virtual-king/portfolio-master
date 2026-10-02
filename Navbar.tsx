@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { useTheme } from '../components/ThemeProvider';
+// import { useTheme } from './ThemeProvider';
 
 const navLinks = [
   { name: 'Home',       href: '/' },
@@ -17,7 +17,7 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname    = usePathname();
-  const { theme, toggleTheme } = useTheme();
+  // const { theme, toggleTheme } = useTheme();
   const [menuOpen,   setMenuOpen]   = useState(false);
   const [scrolled,   setScrolled]   = useState(false);
 
@@ -82,7 +82,7 @@ export default function Navbar() {
         {/* ── Right-side controls ── */}
         <div className="flex items-center gap-2">
           {/* Theme toggle */}
-          <button
+          {/* <button
             onClick={toggleTheme}
             className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
@@ -92,7 +92,7 @@ export default function Navbar() {
               ? <i className="ri-moon-line text-lg" aria-hidden="true" />
               : <i className="ri-sun-line text-lg"  aria-hidden="true" />
             }
-          </button>
+          </button> */}
 
           {/* Hamburger — mobile only */}
           <button
