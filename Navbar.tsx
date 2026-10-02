@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { useTheme } from './ThemeProvider';
+import { useTheme } from '../components/ThemeProvider';
 
 const navLinks = [
   { name: 'Home',       href: '/' },
