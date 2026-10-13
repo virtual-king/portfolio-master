@@ -19,15 +19,18 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           // Custom image component using Next/Image
           img: ({ src, alt }) => {
             if (!src) return null;
+            const isString = typeof src === 'string';
+            const imageSrc = isString ? src : URL.createObjectURL(src);
+            const isUpload = isString && src.startsWith('/uploads');
             return (
               <div className="my-6 rounded-lg overflow-hidden border border-white/10">
                 <Image
-                  src={typeof src === 'string' ? src : URL.createObjectURL(src)}
+                  src={imageSrc}
                   alt={alt || ''}
                   width={800}
                   height={450}
                   className="w-full h-auto object-cover"
-                  unoptimized={src.startsWith('/uploads')}
+                  unoptimized={isUpload}
                 />
               </div>
             );

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Card from '../../components/ui/Card';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('seo');
@@ -301,7 +300,7 @@ export default function Skills() {
 
           {/* Animated Skills Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {digitalMarketingSkills[activeCategory as keyof typeof digitalMarketingSkills]?.map((skill, index) => (
+            {digitalMarketingSkills[activeCategory as keyof typeof digitalMarketingSkills]?.map((skill) => (
               <div
                 key={skill.name}
                 className={`p-6 rounded-2xl border-2 transition-all duration-500 transform hover:scale-105 ${
@@ -391,7 +390,7 @@ export default function Skills() {
             Marketing Technology Stack
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {tools.map((tool, index) => (
+            {tools.map((tool) => (
               <div
                 key={tool.name}
                 className="p-4 text-center rounded-xl bg-navy-light/30 border border-white/5 hover:border-white/20 hover:shadow-lg transition-all duration-300 transform hover:scale-105"

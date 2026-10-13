@@ -43,7 +43,7 @@ export default function Experience() {
       company: "Happy Mountain Nepal",
       period: "Apr 2024 – May 2025",
       location: "Kathmandu, Nepal",
-      logo: "/images/experience/happymountain.jpg",
+      logo: "/images/experience/happymountain.jpeg",
       description: "Directed content strategy and social media presence for lifestyle and wellness brand, leading a team of writers and managing full website revamp.",
       achievements: [
         "Led content team producing SEO-optimized blogs, articles, and landing pages",

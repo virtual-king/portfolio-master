@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { TEAM_WORKS } from './data';
 
 /* ─── tiny hook: reveals element when it enters viewport ─── */
 function useInView(threshold = 0.15) {
@@ -44,7 +43,7 @@ export default function ProjectsPage() {
     {
       id: 'changan-deepal',
       title: 'CHANGAN Deepal',
-      subtitle: 'Marketing Campaign',
+      subtitle: 'S07',
       desc: 'Executed national SMS campaign reaching 80,000+ recipients and coordinated on-ground activation for 10,000+ attendees at NADA Auto Show.',
       tags: ['Brand Activation', 'Event Management', 'Influencer Coordination', 'SMS Marketing'],
       accent: '#3b82f6',
@@ -58,12 +57,12 @@ export default function ProjectsPage() {
       id: 'zegal-seo',
       title: 'Zegal',
       subtitle: 'Global SEO',
-      desc: 'Led international SEO across 5 markets. Built 6,730+ backlinks, boosted traffic by 45% (13,000→18,900 visitors).',
+      desc: 'Led international SEO across 5 markets (HK, SG, UK, AU, NZ). Built 6,730+ backlinks, boosted traffic by 45% (13,000→18,900 visitors).',
       tags: ['International SEO', 'Technical SEO', 'Link Building', 'Analytics'],
       accent: '#10b981',
       logo: '/images/projects/zegal.png',
       stats: [
-        { label: 'Backlinks', value: '6,730+' },
+        { label: 'Backlinks Built', value: '6,730+' },
         { label: 'Traffic Growth', value: '45%' },
       ],
     },
@@ -84,7 +83,7 @@ export default function ProjectsPage() {
       id: 'somtu-vmag',
       title: 'SOMTU Digital Marketing',
       subtitle: 'Social Media',
-      desc: 'Grew social media following by 340% in 2 months. Led 6 departments and 24 team members.',
+      desc: 'Grew social media following by 340% in 2 months. Led 6 departments and 24 team members, driving video views from 150 to 5,500+ within 24 hours.',
       tags: ['Social Media', 'Team Leadership', 'Content Strategy', 'Growth'],
       accent: '#f59e0b',
       logo: '/images/projects/vmag.jpg',
@@ -100,7 +99,7 @@ export default function ProjectsPage() {
       desc: 'Grew Facebook views 264% and Instagram views from 9.2K to 70K+. Generated 89+ leads at ~$1.01/lead.',
       tags: ['Paid Ads', 'Social Media', 'Lead Generation', 'Analytics'],
       accent: '#ef4444',
-      logo: '/images/projects/bernhardt.png',
+      logo: '/images/projects/deepl.png',
       stats: [
         { label: 'Facebook Views', value: '264%' },
         { label: 'Instagram Views', value: '9.2K→70K+' },
@@ -110,13 +109,26 @@ export default function ProjectsPage() {
       id: 'happy-mountain',
       title: 'Happy Mountain Nepal',
       subtitle: 'Content Strategy',
-      desc: 'Directed content strategy for a team of writers producing SEO-optimized blogs and landing pages.',
+      desc: 'Directed content strategy for a team of writers producing SEO-optimized blogs, articles, and landing pages. Led full website revamp.',
       tags: ['Content Strategy', 'SEO', 'Social Media', 'Website Design'],
       accent: '#ec4899',
-      logo: '/images/projects/happymountain.jpeg',
+      logo: '/images/projects/happymountain.jpg',
       stats: [
         { label: 'Content Team', value: '4+' },
         { label: 'Website Revamp', value: '100%' },
+      ],
+    },
+    {
+      id: 'somtu-digital-media',
+      title: 'SOMTU',
+      subtitle: 'Digital Media Lead',
+      desc: 'Established official Instagram and LinkedIn from scratch. Grew Facebook from 10,000 to 12,000 followers. Collaborated with University of Barcelona to launch Post Graduate Diploma in Sustainable Business Management.',
+      tags: ['Social Media Growth', 'Brand Strategy', 'Content Creation', 'Partnerships'],
+      accent: '#06b6d4',
+      logo: '/images/projects/somtu-logo.png',
+      stats: [
+        { label: 'Facebook Growth', value: '10K→12K' },
+        { label: 'Followers Added', value: '2,000+' },
       ],
     },
   ];
@@ -129,7 +141,7 @@ export default function ProjectsPage() {
           <p className="text-blue-400 text-sm font-medium tracking-widest uppercase mb-3">Portfolio</p>
           <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-4">Projects</h1>
           <p className="text-gray-400 max-w-xl text-lg">
-            A collection of projects and campaigns I've led across digital marketing, SEO, and brand strategy.
+            A collection of projects and campaigns I&apos;ve led across digital marketing, SEO, and brand strategy.
           </p>
         </FadeIn>
 

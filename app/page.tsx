@@ -167,7 +167,7 @@ export default function Home() {
             {/* Left - Text */}
             <div>
               <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4">
-                Hi, I'm{' '}
+                Hi, I&apos;m{' '}
                 <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400 bg-clip-text text-transparent">
                   Dipendra
                 </span>
@@ -390,7 +390,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {blogPosts.map((post, i) => (
               <FadeIn key={post.title} delay={i * 100}>
-                <Link href="/blog">
+                <a
+                  href="https://medium.com/@dipendrabhattadigitalmarketing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full"
+                >
                   <div className="group h-full rounded-2xl border border-white/8 bg-navy-light/50 p-7 hover:border-white/20 transition-all duration-500 hover:-translate-y-1 cursor-pointer">
                     <div className="flex items-center gap-2 mb-3">
                       <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/20">
@@ -404,11 +409,11 @@ export default function Home() {
                     <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-white/8">
                       <span>{post.date}</span>
                       <span className="flex items-center gap-1 text-blue-400 group-hover:gap-2 transition-all">
-                        Read More <i className="ri-arrow-right-line" />
+                        Read on Medium <i className="ri-arrow-right-line" />
                       </span>
                     </div>
                   </div>
-                </Link>
+                </a>
               </FadeIn>
             ))}
           </div>
@@ -480,13 +485,13 @@ export default function Home() {
               <div className="relative z-10">
                 <p className="text-blue-400 text-sm font-medium tracking-widest uppercase mb-4">Focus Plan Execute Repeat</p>
                 <h2 className="font-heading text-4xl lg:text-5xl font-bold text-white mb-6">
-                  Let's build something <br />
+                  Let&apos;s build something <br />
                   <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                     amazing together
                   </span>
                 </h2>
                 <p className="text-gray-400 mb-10 max-w-xl mx-auto">
-                  Got a project in mind? I'm currently available for freelance projects and full-time opportunities.
+                  Got a project in mind? I&apos;m currently available for freelance projects and full-time opportunities.
                 </p>
                 <Link href="/contact">
                   <Button size="lg" className="px-10 bg-blue-600 hover:bg-blue-500 border-0 shadow-lg shadow-blue-900/40 transition-all duration-300 hover:-translate-y-0.5">

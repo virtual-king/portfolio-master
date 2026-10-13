@@ -25,7 +25,7 @@ export default function ContactPage() {
           <p className="text-blue-400 text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">Get In Touch</h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
-            Have a project in mind? Let's talk about what we can build together.
+            Have a project in mind? Let&apos;s talk about what we can build together.
           </p>
         </div>
 
